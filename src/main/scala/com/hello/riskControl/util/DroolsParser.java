@@ -1,7 +1,7 @@
-package com.hellobike.riskControl.util;
+package com.hello.riskControl.util;
 
-import com.hellobike.riskControl.drools.DroolsUtil;
-import com.hellobike.utils.GwDataStruct;
+import com.hello.riskControl.drools.DroolsUtil;
+import com.hello.utils.GwDataStruct;
 
 import java.text.ParseException;
 

@@ -1,11 +1,10 @@
-package com.hellobike.utils;
+package com.hello.utils;
 
 //import com.hellobike.riskControl.util.RedisUtil;
-import com.hellobike.riskControl.util.JedisPoolUtil;
+import com.hello.riskControl.util.JedisPoolUtil;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.Date;
 import java.util.Map;
 
 public class GwDataStructService {

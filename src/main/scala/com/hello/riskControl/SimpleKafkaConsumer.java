@@ -1,17 +1,10 @@
-package com.hellobike.riskControl;
+package com.hello.riskControl;
 
-import com.hellobike.riskControl.drools.DroolsUtil;
-import com.hellobike.riskControl.util.Message;
-import org.apache.kafka.clients.consumer.ConsumerRecord;
-import org.apache.kafka.clients.consumer.ConsumerRecords;
-import org.apache.kafka.clients.consumer.KafkaConsumer;
+import com.hello.riskControl.drools.DroolsUtil;
 import org.kie.api.runtime.KieSession;
-import org.kie.internal.runtime.StatefulKnowledgeSession;
 
 import java.io.UnsupportedEncodingException;
 import java.sql.SQLException;
-import java.util.Collections;
-import java.util.Properties;
 
 public class SimpleKafkaConsumer {
     public static void main(String[] args)  throws ClassNotFoundException,SQLException,UnsupportedEncodingException {

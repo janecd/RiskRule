@@ -1,9 +1,9 @@
-package com.hellobike.riskControl
+package com.hello.riskControl
 
-import com.hellobike.constants.Constants
-import com.hellobike.riskControl.drools._
-import com.hellobike.riskControl.util.DroolsParser
-import com.hellobike.utils.PropertiesLoad._
+import com.hello.constants.Constants
+import com.hello.riskControl.drools._
+import com.hello.riskControl.util.DroolsParser
+import com.hello.utils.PropertiesLoad._
 import org.apache.hadoop.conf.Configuration
 import org.apache.hadoop.fs.Path
 import org.apache.kafka.clients.consumer.ConsumerRecord

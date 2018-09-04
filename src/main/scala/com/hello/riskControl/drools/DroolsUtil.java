@@ -1,7 +1,7 @@
-package com.hellobike.riskControl.drools;
+package com.hello.riskControl.drools;
 
-import com.hellobike.utils.GwDataStruct;
-import com.hellobike.utils.GwDataStructService;
+import com.hello.utils.GwDataStruct;
+import com.hello.utils.GwDataStructService;
 import org.kie.api.KieBase;
 import org.kie.api.KieServices;
 import org.kie.api.builder.KieBuilder;
@@ -23,7 +23,6 @@ import org.kie.internal.builder.KnowledgeBuilderError;
 import org.kie.internal.builder.KnowledgeBuilderErrors;
 import org.kie.internal.builder.KnowledgeBuilderFactory;
 import org.kie.internal.io.ResourceFactory;
-import org.kie.internal.runtime.StatefulKnowledgeSession;
 
 import java.io.UnsupportedEncodingException;
 import java.sql.*;

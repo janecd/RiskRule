@@ -1,8 +1,8 @@
-package com.hellobike.riskControl.util;
+package com.hello.riskControl.util;
 
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
-import com.hellobike.utils.GwDataStruct;
+import com.hello.utils.GwDataStruct;
 
 public class GwDataParser {
     public static GwDataStruct parseGwTopicToGwDataStruct(String json){

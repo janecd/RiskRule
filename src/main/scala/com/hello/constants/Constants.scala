@@ -1,4 +1,4 @@
-package com.hellobike.constants
+package com.hello.constants
 
 object Constants {
 

@@ -1,4 +1,4 @@
-package com.hellobike.riskControl.util;
+package com.hello.riskControl.util;
 
 import redis.clients.jedis.Jedis;
 import redis.clients.jedis.JedisPool;

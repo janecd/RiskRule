@@ -1,9 +1,9 @@
-package com.hellobike.utils
+package com.hello.utils
 
 import java.io.{FileNotFoundException, IOException}
 import java.util.Properties
 
-import com.hellobike.constants.Constants
+import com.hello.constants.Constants
 
 object PropertiesLoad {
   val properties = new Properties()

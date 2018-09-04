@@ -1,4 +1,4 @@
-package com.hellobike.utils;
+package com.hello.utils;
 
 public class GwDataStruct {
 

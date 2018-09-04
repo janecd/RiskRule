@@ -1,3 +1,3 @@
 Manifest-Version: 1.0
-Main-Class: com.hellobike.riskControl.RiskRule
+Main-Class: com.hello.riskControl.RiskRule
 
