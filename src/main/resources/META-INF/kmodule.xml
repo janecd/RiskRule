@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kmodule xmlns="http://jboss.org/kie/6.0.0/kmodule">
+
+    <kbase name="rules-jia" packages="cn.rules">
+        <ksession name="all-rules"  default="true" />
+    </kbase>
+    <kbase name="rules-jia2" packages="cn.rules2">
+        <ksession name="getUserType"  default="true" />
+    </kbase>
+</kmodule>

@@ -1,0 +1,12 @@
+package com.fei.drools;
+import com.hellobike.riskControl.util.Message;
+rule "rule1"
+    no-loop true
+    duration 10000
+    when
+        Message( myStatus:status , myMessage : msg );
+
+    then
+        if(myStatus == 1)
+            System.out.println( myStatus+":"+myMessage );
+    end

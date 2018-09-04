@@ -1,0 +1,83 @@
+package cn.rules
+import java.util.Map
+import java.util.List
+import java.text.SimpleDateFormat
+
+import com.hellobike.utils.GwDataStruct
+import com.hellobike.utils.GwDataStructExtend
+import com.hellobike.utils.GwDataStructService
+
+global GwDataStructService gwDataStructService
+
+rule "count"
+    salience 1
+    no-loop true
+    when
+        $gwDataStruct:GwDataStruct();
+
+    then
+        if($gwDataStruct.getActionType().equals("user.ride.check")){
+            if(!gwDataStructService.exist($gwDataStruct.getUserGuid(),$gwDataStruct.getActionType())){
+                gwDataStructService.insertData($gwDataStruct.getUserGuid(),$gwDataStruct.getActionType(),"1");
+                gwDataStructService.insertData($gwDataStruct.getUserGuid(),"startTime",$gwDataStruct.getLogTime());
+                gwDataStructService.insertData($gwDataStruct.getUserGuid(),"updateTime",$gwDataStruct.getLogTime());
+            }
+            else{
+                String startTimeString = gwDataStructService.getData($gwDataStruct.getUserGuid(),"startTime");
+                String updateTimeString = gwDataStructService.getData($gwDataStruct.getUserGuid(),"updateTime");
+                Long deltaTime = gwDataStructService.deltaTime(startTimeString,updateTimeString);
+                if((deltaTime<=60000)&&(deltaTime>=-60000)){
+//                    gwDataStructService.increaseData($gwDataStruct.getUserGuid(),$gwDataStruct.getAction(),1L);
+//                    gwDataStructService.insertData($gwDataStruct.getUserGuid(),"updateTime",$gwDataStruct.getLogTime());
+                    Long count = Long.valueOf(gwDataStructService.getData($gwDataStruct.getUserGuid(),$gwDataStruct.getActionType()));
+                    if(count>=10){
+                        gwDataStructService.insertIndexData(2,$gwDataStruct.getUserGuid(),$gwDataStruct.getActionType(),String.valueOf(count));
+                        gwDataStructService.insertIndexData(2,$gwDataStruct.getUserGuid(),"startTime",startTimeString);
+                        gwDataStructService.insertIndexData(2,$gwDataStruct.getUserGuid(),"updateTime",updateTimeString);
+                        gwDataStructService.insertIndexData(2,$gwDataStruct.getUserGuid(),"type",$gwDataStruct.getType());
+                        gwDataStructService.insertIndexData(2,$gwDataStruct.getUserGuid(),"test","testalll");
+                        gwDataStructService.deleteData($gwDataStruct.getUserGuid(),$gwDataStruct.getActionType());
+//                        System.out.println($gwDataStruct.getUserGuid());
+//                        System.out.println($gwDataStruct.getAction());
+//                        System.out.println(gwDataStructService.getData($gwDataStruct.getUserGuid(),$gwDataStruct.getAction()));
+                    }
+                }
+                else {
+                    //gwDataStructService.deleteData($gwDataStruct.getUserGuid(),$gwDataStruct.getAction());
+                }
+            }
+        }
+        retract($gwDataStruct); //clean memory
+
+end
+
+
+rule "qnengche1"
+    salience 1
+    no-loop true
+    when
+        $gwDataStruct:GwDataStruct((actionType=="user.ride.create")&&(type=="metrics-userGw-tcp"));
+    then
+        gwDataStructService.insertData($gwDataStruct.getUserGuid(),$gwDataStruct.getActionType(),$gwDataStruct.getLogTime());
+    end
+rule "qnengche2"
+    salience 2
+    no-loop true
+    when
+        $gwDataStruct:GwDataStruct((actionType=="user.ride.check")&&(type=="metrics-userGw-https"));
+    then
+        if(gwDataStructService.exist($gwDataStruct.getUserGuid(),"user.ride.create")){
+            String startTimeString = gwDataStructService.getData($gwDataStruct.getUserGuid(),"user.ride.create");
+            String updateTimeString = $gwDataStruct.getLogTime();
+            Long deltaTime = gwDataStructService.deltaTime(startTimeString,updateTimeString);
+            if((deltaTime<=60000)&&(deltaTime>=-60000)){
+                gwDataStructService.insertIndexData(2,$gwDataStruct.getUserGuid(),"user.ride.create",startTimeString);
+                gwDataStructService.insertIndexData(2,$gwDataStruct.getUserGuid(),$gwDataStruct.getActionType(),updateTimeString);
+            }
+        }
+    end
+
+
+
+
+

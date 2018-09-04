@@ -1,0 +1,224 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>com.hellobike</groupId>
+    <artifactId>monitor10</artifactId>
+    <version>1.0-SNAPSHOT</version>
+    <properties>
+        <spark.version>2.2.1</spark.version>
+        <scala.version>2.11</scala.version>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+        <maven.compiler.source>1.8</maven.compiler.source>
+        <maven.compiler.target>1.8</maven.compiler.target>
+        <spark.version>2.2.1</spark.version>
+        <hadoop.version>2.7.5</hadoop.version>
+        <jackson.version>2.6.2</jackson.version>
+        <spark.kafka.version>2.2.1</spark.kafka.version>
+        <kafka.version>0.10.0.1</kafka.version>
+        <elasticsearch.version>5.6.3</elasticsearch.version>
+        <drools.version>7.9.0.Final</drools.version>
+        <encoding>UTF-8</encoding>
+    </properties>
+
+    <repositories>
+        <repository>
+            <id>scala-tools.org</id>
+            <name>Scala-Tools Maven2 Repository</name>
+            <url>http://scala-tools.org/repo-releases</url>
+        </repository>
+    </repositories>
+    <pluginRepositories>
+        <pluginRepository>
+            <id>scala-tools.org</id>
+            <name>Scala-Tools Maven2 Repository</name>
+            <url>http://scala-tools.org/repo-releases</url>
+        </pluginRepository>
+    </pluginRepositories>
+     <dependencies>
+
+         <!-- https://mvnrepository.com/artifact/org.postgresql/postgresql -->
+         <dependency>
+             <groupId>org.postgresql</groupId>
+             <artifactId>postgresql</artifactId>
+             <version>42.1.4</version>
+         </dependency>
+
+         <!-- https://mvnrepository.com/artifact/org.kie/kie-api -->
+         <dependency>
+             <groupId>org.kie</groupId>
+             <artifactId>kie-api</artifactId>
+             <version>${drools.version}</version>
+         </dependency>
+
+         <!-- https://mvnrepository.com/artifact/org.drools/drools-core -->
+         <dependency>
+             <groupId>org.drools</groupId>
+             <artifactId>drools-core</artifactId>
+             <version>${drools.version}</version>
+         </dependency>
+
+         <!-- https://mvnrepository.com/artifact/org.drools/drools-compiler -->
+         <dependency>
+             <groupId>org.drools</groupId>
+             <artifactId>drools-compiler</artifactId>
+             <version>${drools.version}</version>
+         </dependency>
+         <!-- https://mvnrepository.com/artifact/org.kie/kie-internal -->
+         <dependency>
+             <groupId>org.kie</groupId>
+             <artifactId>kie-internal</artifactId>
+             <version>${drools.version}</version>
+         </dependency>
+         <!-- https://mvnrepository.com/artifact/org.drools/drools-compiler -->
+         <!--<dependency>-->
+             <!--<groupId>org.drools</groupId>-->
+             <!--<artifactId>drools-compiler</artifactId>-->
+             <!--<version>7.9.0.Final</version>-->
+         <!--</dependency>-->
+
+
+
+         <!-- 我的Redis添加 -->
+         <dependency>
+             <groupId>redis.clients</groupId>
+             <artifactId>jedis</artifactId>
+             <version>2.9.0</version>
+         </dependency>
+
+         <!-- https://mvnrepository.com/artifact/com.alibaba/druid -->
+         <dependency>
+             <groupId>com.alibaba</groupId>
+             <artifactId>druid</artifactId>
+             <version>1.1.10</version>
+         </dependency>
+         <!-- https://mvnrepository.com/artifact/org.apache.commons/commons-lang3 -->
+         <dependency>
+             <groupId>org.apache.commons</groupId>
+             <artifactId>commons-lang3</artifactId>
+             <version>3.4</version>
+         </dependency>
+
+         <!-- https://mvnrepository.com/artifact/commons-dbutils/commons-dbutils -->
+         <dependency>
+             <groupId>commons-dbutils</groupId>
+             <artifactId>commons-dbutils</artifactId>
+             <version>1.6</version>
+         </dependency>
+         <!-- https://mvnrepository.com/artifact/mysql/mysql-connector-java -->
+         <dependency>
+             <groupId>mysql</groupId>
+             <artifactId>mysql-connector-java</artifactId>
+             <version>6.0.6</version>
+         </dependency>
+
+
+         <dependency>
+             <groupId>org.elasticsearch</groupId>
+             <artifactId>elasticsearch</artifactId>
+             <version>6.0.0</version>
+             <!--<scope>provided</scope>-->
+         </dependency>
+         <dependency>
+             <groupId>org.elasticsearch.client</groupId>
+             <artifactId>transport</artifactId>
+             <version>6.0.0</version>
+             <!--<scope>provided</scope>-->
+         </dependency>
+         <dependency>
+             <groupId>io.github.hengyunabc</groupId>
+             <artifactId>zabbix-sender</artifactId>
+             <version>0.0.5</version>
+             <scope>provided</scope>
+         </dependency>
+         <dependency>
+             <groupId>org.apache.spark</groupId>
+             <artifactId>spark-core_${scala.version}</artifactId>
+             <version>${spark.version}</version>
+             <scope>provided</scope>
+         </dependency>
+         <dependency>
+             <groupId>org.apache.spark</groupId>
+             <artifactId>spark-sql_${scala.version}</artifactId>
+             <version>${spark.version}</version>
+             <scope>provided</scope>
+         </dependency>
+         <dependency>
+             <groupId>org.apache.spark</groupId>
+             <artifactId>spark-streaming_2.11</artifactId>
+             <version>${spark.version}</version>
+             <scope>provided</scope>
+         </dependency>
+         <dependency>
+             <groupId>org.elasticsearch</groupId>
+             <artifactId>elasticsearch-spark-20_2.11</artifactId>
+             <version>6.0.0</version>
+             <!--<scope>provided</scope>-->
+             <!--<scope>provided</scope>-->
+         </dependency>
+         <dependency>
+             <groupId>com.alibaba</groupId>
+             <artifactId>fastjson</artifactId>
+             <version>1.1.41</version>
+             <scope>compile</scope>
+         </dependency>
+         <dependency>
+             <groupId>org.apache.hadoop</groupId>
+             <artifactId>hadoop-common</artifactId>
+             <version>${hadoop.version}</version>
+             <scope>provided</scope>
+         </dependency>
+         <dependency>
+             <groupId>org.apache.hadoop</groupId>
+             <artifactId>hadoop-hdfs</artifactId>
+             <version>${hadoop.version}</version>
+             <scope>provided</scope>
+         </dependency>
+         <dependency>
+             <groupId>org.apache.spark</groupId>
+             <artifactId>spark-streaming-kafka-0-10_2.11</artifactId>
+             <version>2.2.1</version>
+         </dependency>
+         <dependency>
+             <groupId>com.101tec</groupId>
+             <artifactId>zkclient</artifactId>
+             <version>0.10</version>
+         </dependency>
+         <dependency>
+             <groupId>org.apache.kafka</groupId>
+             <artifactId>kafka-clients</artifactId>
+             <version>0.10.0.1</version>
+         </dependency>
+     </dependencies>
+
+    <!--<build>-->
+        <!--<plugins>-->
+            <!--<plugin>-->
+                <!--<artifactId>maven-assembly-plugin</artifactId>-->
+                <!--<version>2.4</version>-->
+                <!--<configuration>-->
+                    <!--<descriptorRefs>-->
+                        <!--<descriptorRef>jar-with-dependencies</descriptorRef>-->
+                    <!--</descriptorRefs>-->
+                    <!--<archive>-->
+                        <!--<manifest>-->
+                            <!--<mainClass>com.hellobike.MetricsBike</mainClass>-->
+                        <!--</manifest>-->
+                    <!--</archive>-->
+                <!--</configuration>-->
+                <!--<executions>-->
+                    <!--<execution>-->
+                        <!--<id>make-assembly</id>-->
+                        <!--<phase>package</phase>-->
+                        <!--<goals>-->
+                            <!--<goal>single</goal>-->
+                        <!--</goals>-->
+                    <!--</execution>-->
+                <!--</executions>-->
+            <!--</plugin>-->
+        <!--</plugins>-->
+    <!--</build>-->
+</project>
