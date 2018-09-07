@@ -3,6 +3,7 @@ package com.hello.riskControl.drools;
 import com.hello.utils.GwDataStruct;
 import com.hello.utils.GwDataStructService;
 import org.kie.api.KieBase;
+import org.kie.api.KieBaseConfiguration;
 import org.kie.api.KieServices;
 import org.kie.api.builder.KieBuilder;
 import org.kie.api.builder.KieFileSystem;
@@ -22,6 +23,7 @@ import org.kie.internal.builder.KnowledgeBuilder;
 import org.kie.internal.builder.KnowledgeBuilderError;
 import org.kie.internal.builder.KnowledgeBuilderErrors;
 import org.kie.internal.builder.KnowledgeBuilderFactory;
+import org.kie.internal.conf.MultithreadEvaluationOption;
 import org.kie.internal.io.ResourceFactory;
 
 import java.io.UnsupportedEncodingException;
@@ -57,6 +59,7 @@ public class DroolsUtil {
         }
         InternalKnowledgeBase kBase = KnowledgeBaseFactory.newKnowledgeBase();
         kBase.addPackages(kb.getKnowledgePackages());
+
 
         kieSessions = kBase.newKieSession();
     }
@@ -113,7 +116,11 @@ public class DroolsUtil {
                 return false;
             }
             KieContainer kieContainer = kieServices.newKieContainer(kieServices.getRepository().getDefaultReleaseId());
-            KieBase kieBase = kieContainer.getKieBase();
+
+            KieBaseConfiguration kieBaseConf = kieServices.newKieBaseConfiguration();
+            kieBaseConf.setOption(MultithreadEvaluationOption.YES);
+            
+            KieBase kieBase = kieContainer.newKieBase(kieBaseConf);
             kieSessions = kieBase.newKieSession();
             return true;
         }
